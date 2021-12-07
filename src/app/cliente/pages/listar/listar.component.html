@@ -1,11 +1,47 @@
-<p>listar works!</p>
-
-<div class="container">
-    <div class="grid">
-        <div class="row">
-            <div class="col">
-                test
-            </div>
-        </div>
+<div class="container mt-4">
+    
+    <div class="row">
+      <div class="col-md-12 table-responsive">
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Celular</th>
+                    <th scope="col">Fecha de Creacion</th>
+                    <th scope="col">Fecha de Actualizacion</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of clientes">
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.nombres}}</td>
+                    <td>{{item.apellidos}}</td>
+                    <td> {{item.correo}} </td>
+                    <td> {{item.celular}} </td>
+                    <td> {{item.fechaCreacion}} </td>
+                    <td> {{item.fechaActualizacion}} </td>
+                    <td> {{item.estado}} </td>
+                    <td> 
+                        <button type="button" class="btn btn-primary">
+                            <i class="bi bi-pen"></i>
+                        </button>
+                        
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger">
+                            <i class="bi bi-x-square"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+          
+      </div>
     </div>
-</div>
+  </div>

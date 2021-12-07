@@ -1,6 +1,6 @@
 // To parse this data:
 //
-//   import { Convert } from "./file";
+//   import { Convert, Orden } from "./file";
 //
 //   const orden = Convert.toOrden(json);
 //
@@ -8,6 +8,12 @@
 // match the expected interface, even if the JSON is valid.
 
 export interface Orden {
+    estado: boolean;
+    msj:    string;
+    datos:  Dato[];
+}
+
+export interface Dato {
     id:                 number;
     idCliente:          number;
     idEstadoOrden:      number;
@@ -22,12 +28,12 @@ export interface Orden {
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toOrden(json: string): Orden[] {
-        return cast(JSON.parse(json), a(r("Orden")));
+    public static toOrden(json: string): Orden {
+        return cast(JSON.parse(json), r("Orden"));
     }
 
-    public static ordenToJson(value: Orden[]): string {
-        return JSON.stringify(uncast(value, a(r("Orden"))), null, 2);
+    public static ordenToJson(value: Orden): string {
+        return JSON.stringify(uncast(value, r("Orden")), null, 2);
     }
 }
 
@@ -165,6 +171,11 @@ function r(name: string) {
 
 const typeMap: any = {
     "Orden": o([
+        { json: "estado", js: "estado", typ: true },
+        { json: "msj", js: "msj", typ: "" },
+        { json: "datos", js: "datos", typ: a(r("Dato")) },
+    ], false),
+    "Dato": o([
         { json: "id", js: "id", typ: 0 },
         { json: "idCliente", js: "idCliente", typ: 0 },
         { json: "idEstadoOrden", js: "idEstadoOrden", typ: 0 },

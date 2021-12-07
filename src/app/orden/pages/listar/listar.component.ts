@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Orden } from '../../interfaces/orden.interface';
+import { Dato, Orden } from '../../interfaces/orden.interface';
 import { OrdenService } from '../../services/orden.service';
 
 @Component({
@@ -12,8 +12,7 @@ export class ListarComponent implements OnInit {
 
   constructor(private ordenService: OrdenService) { }
 
-  ordenes: Orden[] = [];
-  dic: {} = {}
+  ordenes: Dato[] = [];
   ngOnInit(): void {
     this.consultarOrdenes();
   }
@@ -21,9 +20,13 @@ export class ListarComponent implements OnInit {
   consultarOrdenes(){
     this.ordenService.listarOrdenes().subscribe(
       (res => {
-        console.log(res)
-        
-        console.log(this.ordenes)
+        if(res.estado){
+          console.log(res);
+          this.ordenes = res.datos;
+        }
+        else{
+          console.log("Error al realizar la peticion");
+        }
       }
       )
     );

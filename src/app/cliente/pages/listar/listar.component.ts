@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from '../../interfaces/cliente.interface';
+import { Cliente, Dato } from '../../interfaces/cliente.interface';
 import { ClienteService } from '../../services/cliente.service';
 
 @Component({
@@ -10,24 +10,26 @@ import { ClienteService } from '../../services/cliente.service';
 })
 export class ListarComponent implements OnInit {
 
-  // cliente: {} = {};
+  clientes: Dato[] = [];
 
   constructor(private clienteService: ClienteService) { 
-    // this.consultarClientes();
+    this.consultarClientes();
   }
 
   ngOnInit(): void {
   }
 
-  /* consultarClientes(){
+  consultarClientes(){
     this.clienteService.listarClientes().subscribe(
       (res => {
-        if (res) { this.cliente = res }
+        if (res.estado) { 
+          this.clientes = res.datos
+        }
         else{
-           console.log("no existen clientes");
+          console.log("Error al realizar la peticion");
         }
       }
       )
     );
-  } */
+  }
 }

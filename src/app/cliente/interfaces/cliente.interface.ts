@@ -1,13 +1,19 @@
 // To parse this data:
 //
-//   import { Convert } from "./file";
+//   import { Convert, Cliente } from "./file";
 //
-//   const welcome = Convert.toWelcome(json);
+//   const cliente = Convert.toCliente(json);
 //
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
 export interface Cliente {
+    estado: boolean;
+    msj:    string;
+    datos:  Dato[];
+}
+
+export interface Dato {
     id:                 number;
     nombres:            string;
     apellidos:          string;
@@ -21,12 +27,12 @@ export interface Cliente {
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toWelcome(json: string): Cliente[] {
-        return cast(JSON.parse(json), a(r("Welcome")));
+    public static toCliente(json: string): Cliente {
+        return cast(JSON.parse(json), r("Cliente"));
     }
 
-    public static welcomeToJson(value: Cliente[]): string {
-        return JSON.stringify(uncast(value, a(r("Welcome"))), null, 2);
+    public static clienteToJson(value: Cliente): string {
+        return JSON.stringify(uncast(value, r("Cliente")), null, 2);
     }
 }
 
@@ -163,7 +169,12 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-    "Welcome": o([
+    "Cliente": o([
+        { json: "estado", js: "estado", typ: true },
+        { json: "msj", js: "msj", typ: "" },
+        { json: "datos", js: "datos", typ: a(r("Dato")) },
+    ], false),
+    "Dato": o([
         { json: "id", js: "id", typ: 0 },
         { json: "nombres", js: "nombres", typ: "" },
         { json: "apellidos", js: "apellidos", typ: "" },
