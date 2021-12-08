@@ -1,43 +1,33 @@
 // To parse this data:
 //
-//   import { Convert, Cliente } from "./file";
+//   import { Convert, EstadoOrden } from "./file";
 //
-//   const cliente = Convert.toCliente(json);
+//   const estadoOrden = Convert.toEstadoOrden(json);
 //
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
-
-export interface Cliente {
+export interface EstadoOrden {
     estado: boolean;
     msj:    string;
-    datos:  Clientes[];
+    datos:  Estado[];
 }
 
-export interface Clientes {
-    id:                 number;
-    identificacion:     string;
-    nombres:            string;
-    apellidos:          string;
-    correo:             string;
-    celular:            number;
-    fechaCreacion:      Date;
-    fechaActualizacion: Date;
-    estado:             string;
+export interface Estado {
+    id:      number;
+    nombre:  string;
+    detalle: string;
 }
 
-export interface Editar {
-    id: number;
-}
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toCliente(json: string): Cliente {
-        return cast(JSON.parse(json), r("Cliente"));
+    public static toEstadoOrden(json: string): EstadoOrden {
+        return cast(JSON.parse(json), r("EstadoOrden"));
     }
 
-    public static clienteToJson(value: Cliente): string {
-        return JSON.stringify(uncast(value, r("Cliente")), null, 2);
+    public static estadoOrdenToJson(value: EstadoOrden): string {
+        return JSON.stringify(uncast(value, r("EstadoOrden")), null, 2);
     }
 }
 
@@ -174,19 +164,14 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-    "Cliente": o([
+    "EstadoOrden": o([
         { json: "estado", js: "estado", typ: true },
         { json: "msj", js: "msj", typ: "" },
         { json: "datos", js: "datos", typ: a(r("Dato")) },
     ], false),
     "Dato": o([
         { json: "id", js: "id", typ: 0 },
-        { json: "nombres", js: "nombres", typ: "" },
-        { json: "apellidos", js: "apellidos", typ: "" },
-        { json: "correo", js: "correo", typ: "" },
-        { json: "celular", js: "celular", typ: 0 },
-        { json: "fechaCreacion", js: "fechaCreacion", typ: Date },
-        { json: "fechaActualizacion", js: "fechaActualizacion", typ: Date },
-        { json: "estado", js: "estado", typ: "" },
+        { json: "nombre", js: "nombre", typ: "" },
+        { json: "detalle", js: "detalle", typ: "" },
     ], false),
 };

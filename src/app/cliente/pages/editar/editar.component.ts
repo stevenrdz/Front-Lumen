@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Clientes, Editar } from '../../interfaces/cliente.interface';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-editar',
@@ -8,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditarComponent implements OnInit {
 
-  constructor() { }
+  clientes: Clientes[] = [];
+  idCliente: any;
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.queryParamMap
+      .subscribe(params => {
+        console.log(params)
+      }
+    );
   }
+
+  
 
 }

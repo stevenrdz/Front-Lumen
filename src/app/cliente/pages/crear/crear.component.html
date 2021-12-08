@@ -1,11 +1,13 @@
 <div class="container mt-4 p-4">
+    <h4>Creación de Cliente</h4>
+    <hr>
     <form class="row g-2"
         [formGroup]="miFormulario"
-        (ngSubmit)="nuevoClientes()"
+        (ngSubmit)="nuevoCliente()"
         autocomplete="off">
         <div class="mb-3 col-md-4">
             <label class="form-label">Identificacion</label>
-            <input formControlName="identificacion" type="number" class="form-control col-auto">
+            <input formControlName="identificacion" type="text" class="form-control col-auto">
           <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
         </div>
         <div class="mb-3 col-md-4">

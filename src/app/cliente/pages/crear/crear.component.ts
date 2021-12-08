@@ -34,7 +34,7 @@ export class CrearComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  nuevoClientes(){
+  nuevoCliente(){
 
     console.log(this.miFormulario.value);
     // const { email, password } = this.miFormulario.value;
@@ -45,7 +45,7 @@ export class CrearComponent implements OnInit {
           if(resp.estado){
             Swal.fire('Creado', resp.msj, 'success');
           }else{
-            Swal.fire('Error', resp, 'error');
+            Swal.fire('Error', resp.msj, 'error');
           }
           
         }

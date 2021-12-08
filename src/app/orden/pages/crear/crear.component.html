@@ -1,1 +1,52 @@
-<p>crear works!</p>
+<div class="container mt-4 p-4">
+    <h4>Creación de Orden</h4>
+    <hr>
+    <form class="row g-2"
+        [formGroup]="ordenForm"
+        (ngSubmit)="guardarOrden()"
+        autocomplete="off">
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Identificacion de Cliente</label>
+            <select formControlName="idCliente" class="form-select" aria-label="Default select example">
+                <!-- <option selected>Seleccione la identificacion</option> -->
+                <option *ngFor="let item of clientes" value="{{item.id}}">{{item.identificacion}}</option>
+              </select>
+          <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Identificacion de estado</label>
+            <select formControlName="idEstadoOrden" class="form-select" aria-label="Default select example">
+                <!-- <option selected>Seleccione el estado</option> -->
+                <option *ngFor="let item of estadoOrdenes" value="{{item.id}}">{{item.nombre}}</option>
+              </select>
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label"># Orden</label>
+            <input formControlName="nroOrden" type="text" class="form-control">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Valor a Pagar</label>
+            <input formControlName="valorPagar" type="text" class="form-control">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Detalle</label>
+            <input formControlName="detalle" type="text" class="form-control">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Fecha de Creación</label>
+            <input formControlName="fechaCreacion" type="date" class="form-control">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Fecha de Actualización</label>
+            <input formControlName="fechaActualizacion" type="date" class="form-control">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Estado</label>
+            <input formControlName="estado" type="text" class="form-control">
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Crear Orden</button>
+        </div>
+       
+    </form>
+</div>

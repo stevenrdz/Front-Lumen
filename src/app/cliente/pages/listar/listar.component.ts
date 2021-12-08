@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente, Dato } from '../../interfaces/cliente.interface';
+import { Clientes } from '../../interfaces/cliente.interface';
 import { ClienteService } from '../../services/cliente.service';
+import { Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-listar',
@@ -10,9 +11,10 @@ import { ClienteService } from '../../services/cliente.service';
 })
 export class ListarComponent implements OnInit {
 
-  clientes: Dato[] = [];
+  clientes: Clientes[] = [];
 
-  constructor(private clienteService: ClienteService) { 
+  constructor(private clienteService: ClienteService,
+    private router:Router) { 
     this.consultarClientes();
   }
 
@@ -31,5 +33,9 @@ export class ListarComponent implements OnInit {
       }
       )
     );
+  }
+
+  editarCliente(idCliente: Number) {
+    this.router.navigate(['cliente/editar'], { queryParams: { id: idCliente} });
   }
 }

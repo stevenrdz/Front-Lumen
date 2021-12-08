@@ -10,10 +10,10 @@
 export interface Orden {
     estado: boolean;
     msj:    string;
-    datos:  Dato[];
+    datos:  Ordenes[];
 }
 
-export interface Dato {
+export interface Ordenes {
     id:                 number;
     idCliente:          number;
     idEstadoOrden:      number;

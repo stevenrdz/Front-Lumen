@@ -1,5 +1,33 @@
 <div class="container mt-4">
-    
+    <h4>Listado de Ordenes</h4>
+    <hr>
+    <div class="row g-4">
+        <form class="row g-4"
+            [formGroup]="filtroForm"
+            (ngSubmit)="filtrarOrden()"
+            autocomplete="off">
+            <div class="mb-3 col-md-2">
+                <label class="form-label">Fecha desde*</label>
+                <input formControlName="fechaDesde" type="date" class="form-control">
+            </div>
+            <div class="mb-3 col-md-2">
+                <label class="form-label">Fecha hasta*</label>
+                <input formControlName="fechaHasta" type="date" class="form-control">
+            </div>
+            <div class="mb-3 col-md-3">
+                <label class="form-label">Estado</label>
+                <select formControlName="idEstadoOrden" class="form-select" aria-label="Default select example">
+                    <!-- <option selected>Seleccione el estado</option> -->
+                    <option *ngFor="let item of estadoOrdenes" value="{{item.id}}">{{item.nombre}}</option>
+                  </select>
+            </div>
+            <div class="mb-4 mt-1">
+                <label class="form-label"></label>
+                <button type="submit" class="btn btn-primary">buscar</button>
+            </div>
+        </form>
+        
+    </div>
     <div class="row">
       <div class="col-md-12 table-responsive">
         <table class="table">
