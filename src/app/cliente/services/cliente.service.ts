@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
 import { catchError, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Cliente } from '../interfaces/cliente.interface';
+import { Cliente, Editar } from '../interfaces/cliente.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,10 @@ export class ClienteService {
       ),
       catchError( err => of(err.error.message))
     );
+  }
+
+  editarCliente(id: Number){
+    
   }
 
 }

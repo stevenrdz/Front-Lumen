@@ -15,9 +15,11 @@ export class EditarComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.queryParamMap
+    this.route.queryParams
       .subscribe(params => {
-        console.log(params)
+        console.log(params['id'])
+        this.idCliente = params['id'];
+        
       }
     );
   }
