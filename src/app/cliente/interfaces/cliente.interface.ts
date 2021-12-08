@@ -15,6 +15,7 @@ export interface Cliente {
 
 export interface Dato {
     id:                 number;
+    identificacion:     string;
     nombres:            string;
     apellidos:          string;
     correo:             string;

@@ -1,5 +1,49 @@
-
-<p>crear works!</p>
-<div class="container">
-
+<div class="container mt-4 p-4">
+    <form class="row g-2"
+        [formGroup]="miFormulario"
+        (ngSubmit)="nuevoClientes()"
+        autocomplete="off">
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Identificacion</label>
+            <input formControlName="identificacion" type="number" class="form-control col-auto">
+          <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Nombres</label>
+            <input formControlName="nombres" type="text" class="form-control">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Apellidos</label>
+            <input formControlName="apellidos" type="text" class="form-control">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Correo</label>
+            <input formControlName="correo" type="email" class="form-control">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Celular</label>
+            <input formControlName="celular" type="text" class="form-control">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Fecha de Creación</label>
+            <input formControlName="fechaCreacion" type="date" class="form-control">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Fecha de Actualización</label>
+            <input formControlName="fechaActualizacion" type="date" class="form-control">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Estado</label>
+            <input formControlName="estado" type="text" class="form-control">
+        </div>
+        <div class="col-12">
+            <button type="submit"  class="btn btn-primary">Crear Cliente</button>
+        </div>
+       
+    </form>
 </div>
+
+<!-- 
+[formGroup]="miFormulario"
+  (ngSubmit)="login()"
+  autocomplete="off" -->

@@ -6,6 +6,7 @@
             <thead class="table-dark">
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Cedula</th>
                     <th scope="col">Nombres</th>
                     <th scope="col">Apellidos</th>
                     <th scope="col">Correo</th>
@@ -20,6 +21,7 @@
             <tbody>
                 <tr *ngFor="let item of clientes">
                     <th scope="row">{{item.id}}</th>
+                    <td>{{item.identificacion}}</td>
                     <td>{{item.nombres}}</td>
                     <td>{{item.apellidos}}</td>
                     <td> {{item.correo}} </td>
