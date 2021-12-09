@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 export class CrearComponent implements OnInit {
 
   miFormulario: FormGroup = this.fb.group({
-    identificacion: ['', [Validators.required]],
+    identificacion: ['', [Validators.required] ],
     nombres: ['', [Validators.required]],
     apellidos: ['', [Validators.required]],
     correo: ['', [Validators.required, Validators.email]],

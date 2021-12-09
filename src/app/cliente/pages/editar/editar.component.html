@@ -1,44 +1,46 @@
-<div class="container mt-4">
+<div class="container mt-4 p-4">
     <h4>Editar Cliente</h4>
     <hr>
-    <div class="row">
-      <div class="col-md-12 table-responsive">
-        <table class="table">
-            <thead class="table-dark">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Cedula</th>
-                    <th scope="col">Nombres</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Celular</th>
-                    <th scope="col">Fecha de Creacion</th>
-                    <th scope="col">Fecha de Actualizacion</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Editar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of clientes">
-                    <th scope="row">{{item.id}}</th>
-                    <td>{{item.identificacion}}</td>
-                    <td>{{item.nombres}}</td>
-                    <td>{{item.apellidos}}</td>
-                    <td> {{item.correo}} </td>
-                    <td> {{item.celular}} </td>
-                    <td> {{item.fechaCreacion}} </td>
-                    <td> {{item.fechaActualizacion}} </td>
-                    <td> {{item.estado}} </td>
-                    <td> 
-                        <button type="button" class="btn btn-primary">
-                            Actualizar
-                        </button>
-                        
-                    </td>
-                </tr>
-            </tbody>
-          </table>
-          
-      </div>
-    </div>
-  </div>
+    <form class="row g-2"
+        [formGroup]="editarForm"
+        (ngSubmit)="actualizarCliente()"
+        autocomplete="off">
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Identificacion</label>
+            <input formControlName="identificacion" type="text" class="form-control col-auto">
+          <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Nombres</label>
+            <input formControlName="nombres" type="text" class="form-control">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Apellidos</label>
+            <input formControlName="apellidos" type="text" class="form-control">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Correo</label>
+            <input formControlName="correo" type="email" class="form-control">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Celular</label>
+            <input formControlName="celular" type="text" class="form-control">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Fecha de Creación</label>
+            <input formControlName="fechaCreacion" type="date" class="form-control">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Fecha de Actualización</label>
+            <input formControlName="fechaActualizacion" type="date" class="form-control">
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Estado</label>
+            <input formControlName="estado" type="text" class="form-control">
+        </div>
+        <div class="col-12">
+            <button type="submit"  class="btn btn-primary">Actualizar Cliente</button>
+        </div>
+       
+    </form>
+</div>

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
 import { catchError, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Cliente, Editar } from '../interfaces/cliente.interface';
+import { Cliente, Clientes } from '../interfaces/cliente.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +30,28 @@ export class ClienteService {
     );
   }
 
-  editarCliente(id: Number){
-    
+  editarCliente(params: Params){
+    return this.http.post<Clientes>(`${this.baseUrl}/cliente/editar`,params)
+    .pipe(
+      tap(
+        resp => {
+          console.log("editar", resp)
+        }
+      ),
+      catchError( err => of(err.error.message))
+    );
+  }
+
+  actualizarCliente(params: Params){
+    return this.http.put<Clientes>(`${this.baseUrl}/cliente/actualizar`,params)
+    .pipe(
+      tap(
+        resp => {
+          console.log("actualizar", resp)
+        }
+      ),
+      catchError( err => of(err.error.message))
+    );
   }
 
 }
